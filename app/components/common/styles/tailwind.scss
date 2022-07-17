@@ -1,0 +1,279 @@
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+
+@import "tailwindcss/utilities";
+
+:root {
+  --primary: #eaba4c;
+  --primary-light: #f1c65f;
+  --primary-dark: #d4a944;
+  --secondary: #1e1e2d;
+  --secondary-light: #1e1e2d;
+}
+
+.box {
+  @apply px-4 py-3 mb-8 bg-white rounded-lg shadow-md;
+}
+
+.btn-primary {
+  @apply disabled:!bg-gray-300 disabled:cursor-default overflow-hidden relative outline-none focus:outline-none bg-primary shadow-lg rounded-md px-1 md:px-5 w-full py-0 md:py-2 cursor-pointer m-0.5 hover:bg-primary-dark whitespace-nowrap text-sm md:text-base;
+  &.submitting {
+    @apply text-gray-400 hover:bg-primary cursor-default;
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      transform: translateX(-100%);
+      background-image: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0,
+        rgba(255, 255, 255, 0.2) 20%,
+        rgba(255, 255, 255, 0.5) 60%,
+        rgba(255, 255, 255, 0)
+      );
+      animation: shimmer 3s infinite;
+      content: "";
+    }
+  }
+}
+
+.upload-container {
+  @apply relative overflow-hidden w-64 flex flex-col items-center bg-white rounded-lg shadow-lg tracking-wide border;
+  &:not(.has-value) {
+    @apply cursor-pointer px-4 py-6 justify-center;
+  }
+  &:hover:not(.has-value) {
+    @apply bg-primary text-white;
+    svg {
+      @apply text-white;
+    }
+  }
+  &.submitting {
+    @apply text-gray-400 hover:bg-primary cursor-default hover:bg-white;
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      transform: translateX(-100%);
+      background-image: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0,
+        rgba(255, 255, 255, 0.2) 20%,
+        rgba(255, 255, 255, 0.5) 60%,
+        rgba(255, 255, 255, 0)
+      );
+      animation: shimmer 3s infinite;
+      content: "";
+    }
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.table {
+  @apply w-full whitespace-nowrap;
+  thead {
+    tr {
+      @apply text-xs font-normal tracking-wide text-gray-500 uppercase border-b bg-gray-50;
+      th {
+        @apply px-4 py-3 md:text-base text-primary !text-xs font-normal;
+      }
+    }
+  }
+  tbody {
+    @apply bg-white divide-y;
+    tr {
+      @apply text-gray-700;
+      td {
+        @apply px-4 py-3;
+      }
+    }
+  }
+}
+
+.page-title-container {
+  @apply flex items-center mb-5;
+  .page-title {
+    @apply font-semibold text-xl;
+  }
+  a {
+    @apply ml-3 cursor-pointer text-sm;
+  }
+}
+
+.fiats-list-container {
+  @apply flex items-center px-10 justify-center mb-5 md:mb-2;
+  span {
+    @apply font-bold text-[#555555] whitespace-nowrap pr-4;
+  }
+  .fiats-list {
+    @apply flex items-center;
+    li {
+      @apply border-2 border-gray-50 shadow-lg rounded-md px-1 md:px-3 w-full py-0 md:py-2 cursor-pointer m-0.5 
+        hover:bg-yellow-50 hover:border-yellow-50 whitespace-nowrap text-sm md:text-base;
+
+      &.active {
+        @apply border-primary-light font-semibold;
+      }
+    }
+  }
+}
+.exchange-table-container {
+  @apply rounded-2xl py-5 my-5 mx-2;
+
+  .exchange-table {
+    @apply w-full;
+    thead {
+      tr {
+        th {
+          @apply py-2 px-2 text-xs whitespace-nowrap md:text-base;
+        }
+      }
+    }
+    tbody {
+      tr {
+        td {
+          @apply py-3 px-2 align-middle;
+          .exchange-table-btns-container {
+            @apply flex items-center flex-wrap;
+            .exchange-table-btn {
+              @apply bg-primary border border-[#707070] rounded-md px-1 md:px-3 py-0 md:py-0.5 cursor-pointer m-0.5 hover:bg-[#d4a944] whitespace-nowrap text-sm md:text-base;
+            }
+          }
+        }
+        &:nth-child(odd) {
+          @apply bg-gray-100;
+        }
+      }
+    }
+  }
+}
+
+.page-title-container {
+  @apply flex items-center mb-5;
+  .page-title {
+    @apply font-semibold text-2xl;
+  }
+  a {
+    @apply ml-3 cursor-pointer text-sm;
+  }
+}
+.submit-btn {
+  @apply bg-primary shadow-lg text-white rounded-md md:px-4 md:py-2 cursor-pointer py-2 px-4 hover:bg-[#d4a944] whitespace-nowrap text-sm md:text-base;
+}
+
+.tabs {
+  @apply flex items-center border-b border-[#e9e9e9] mb-4;
+  li {
+    @apply text-black cursor-pointer px-3 py-1 border-b font-semibold;
+    &.active {
+      @apply text-primary border-primary;
+    }
+  }
+}
+
+.shortcut-box {
+  @apply z-0 border bg-white rounded-lg shadow-md  flex flex-col items-center justify-center p-6 cursor-pointer hover:bg-gray-100;
+  img {
+    @apply w-12 text-gray-400;
+  }
+  span {
+    @apply font-semibold mt-2;
+  }
+}
+.account-item {
+  @apply border border-gray-400 rounded-lg flex flex-col items-center justify-center px-3 py-3;
+  &:hover {
+    @apply bg-gray-200;
+  }
+  .operations {
+    @apply flex items-center justify-end w-full border-b border-gray-300 pb-3 mb-3;
+    a {
+      @apply cursor-pointer ml-3;
+      .edit {
+        svg {
+          @apply !text-green-500;
+        }
+      }
+      svg {
+        @apply w-5 h-5;
+      }
+    }
+  }
+  .info-row {
+    @apply flex items-center justify-start whitespace-nowrap w-full font-normal;
+    span {
+      @apply text-sm;
+      &:last-child {
+        @apply pl-2 w-full text-right;
+      }
+    }
+  }
+  &.add-item {
+    @apply border-dashed cursor-pointer;
+    svg {
+      @apply text-gray-300 w-12 h-12;
+    }
+    &:hover {
+      @apply bg-transparent;
+      svg {
+        @apply text-primary;
+      }
+    }
+  }
+  span {
+    @apply font-semibold mt-3 text-center;
+  }
+}
+
+.pagination-sell {
+  @apply w-full text-center;
+}
+.pagination {
+  @apply flex items-center justify-center;
+  .page-item {
+    a {
+      @apply w-8 h-8 rounded-full flex items-center justify-center text-white text-sm bg-primary m-1 hover:bg-primary-dark cursor-pointer;
+    }
+    &.disabled {
+      a {
+        @apply bg-gray-200 !cursor-default hover:bg-gray-200;
+      }
+    }
+  }
+  .active-item {
+    a {
+      @apply !bg-secondary !cursor-default hover:!bg-secondary;
+    }
+  }
+}
+
+.order-form-container {
+  @apply w-full p-5;
+  .item {
+    @apply w-full flex items-center justify-between py-3;
+  }
+}
+
+.btn-edit {
+  @apply cursor-pointer;
+  svg {
+    @apply !text-green-500 hover:!text-gray-600 w-6 h-6 ml-2;
+  }
+}
+
+.btn-delete {
+  @apply cursor-pointer;
+  svg {
+    @apply !text-red-500 hover:!text-red-600 w-6 h-6 ml-2;
+  }
+}

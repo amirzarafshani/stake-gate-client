@@ -1,0 +1,193 @@
+@import "./fonts";
+
+body {
+  font-family: "Poppins";
+}
+
+.MuiBackdrop-root {
+  background-color: rgba(30, 30, 45, 0.9) !important;
+}
+
+.blink {
+  animation: blinker 0.5s linear;
+}
+
+@keyframes blinker {
+  25% {
+    opacity: 0.75;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  75% {
+    opacity: 0.25;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.header_hero {
+  height: 600px;
+}
+
+@media (max-width: 1400px) {
+  .header_hero {
+    height: 800px;
+  }
+}
+
+.hero_shape {
+  opacity: 0.6;
+  position: absolute;
+  z-index: -10;
+}
+
+.shape_1 {
+  top: 150px;
+  left: 10%;
+  width: 45px;
+}
+
+.shape_2 {
+  top: 150px;
+  left: 30%;
+  width: 40px;
+}
+
+.shape_3 {
+  top: 200px;
+  left: 40%;
+  width: 42px;
+}
+
+.shape_4 {
+  top: 120px;
+  left: 50%;
+  width: 38px;
+}
+
+.shape_5 {
+  top: 40%;
+  left: 14%;
+  width: 40px;
+}
+
+.shape_6 {
+  top: 34%;
+  left: 48%;
+  width: 42px;
+}
+
+.shape_7 {
+  top: 60%;
+  left: 80px;
+  width: 38px;
+}
+
+.shape_8 {
+  top: 55%;
+  left: 38%;
+  width: 42px;
+}
+
+.shape_9 {
+  bottom: 100px;
+  left: 13%;
+  width: 42px;
+}
+
+.shape_10 {
+  bottom: 200px;
+  left: 25%;
+  width: 40px;
+}
+
+.shape_11 {
+  bottom: 80px;
+  left: 35%;
+  width: 38px;
+}
+
+.shape_12 {
+  bottom: 25%;
+  left: 42%;
+  width: 41px;
+}
+
+.header_shape {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+}
+
+.header_shape::before {
+  content: "";
+  background-color: #1e1e2d;
+  transform: skewX(-15deg);
+  width: 200%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.header_image {
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 52px;
+  padding-left: 20px;
+  padding-right: 20px;
+  top: 0;
+  right: 0;
+  width: 100%;
+}
+
+@media (min-width: 960px) {
+  .header_image {
+    height: 100%;
+    margin-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    position: absolute;
+    width: 50%;
+  }
+}
+
+.header_image img {
+  max-width: 100%;
+}
+
+@media (min-width: 960px) {
+  .header_image img {
+    width: auto;
+  }
+}
+
+@media (min-width: 1140px) {
+  .header_image img {
+    max-width: 720px;
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translatey(0px);
+  }
+
+  50% {
+    transform: translatey(-20px);
+  }
+}
