@@ -15,7 +15,7 @@ import { hot } from 'react-hot-loader/root';
 import HomePage from 'containers/HomePage/Loadable';
 import Login from 'containers/Auth/Forms/LoginForm';
 import Referrals from 'containers/Referrals/Loadable';
-import releases from 'containers/releases/Loadable';
+import Releases from 'containers/Releases/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Aboutus from 'containers/Pages/Aboutus/Loadable';
 import Layout from 'components/common/layout/Layout';
@@ -58,7 +58,7 @@ function App(props) {
           <PrivateRoute
             exact
             path="/releases"
-            component={releases}
+            component={Releases}
             user={props.user}
           />
           <Route path="" component={NotFoundPage} />
