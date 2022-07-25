@@ -15,7 +15,6 @@ import { hot } from 'react-hot-loader/root';
 import HomePage from 'containers/HomePage/Loadable';
 import Login from 'containers/Auth/Forms/LoginForm';
 import Referrals from 'containers/Referrals/Loadable';
-import assets from 'containers/assets/Loadable';
 import releases from 'containers/releases/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Aboutus from 'containers/Pages/Aboutus/Loadable';
@@ -54,12 +53,6 @@ function App(props) {
             exact
             path="/referrals"
             component={Referrals}
-            user={props.user}
-          />
-          <PrivateRoute
-            exact
-            path="/assets"
-            component={assets}
             user={props.user}
           />
           <PrivateRoute
