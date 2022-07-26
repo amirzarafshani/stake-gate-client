@@ -14,6 +14,7 @@ import { Helmet } from 'react-helmet-async';
 import { hot } from 'react-hot-loader/root';
 import HomePage from 'containers/HomePage/Loadable';
 import Login from 'containers/Auth/Forms/LoginForm';
+import Assets from 'containers/Assets/Loadable';
 import Referrals from 'containers/Referrals/Loadable';
 import Releases from 'containers/Releases/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
@@ -53,6 +54,12 @@ function App(props) {
             exact
             path="/referrals"
             component={Referrals}
+            user={props.user}
+          />
+          <PrivateRoute
+            exact
+            path="/Assets"
+            component={Assets}
             user={props.user}
           />
           <PrivateRoute
