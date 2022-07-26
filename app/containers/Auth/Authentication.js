@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import withAuth from '../../../components/redux/providers/withAuth';
-import LoginForm from '../../Auth/Forms/LoginForm';
-import RegisterForm from '../../Auth/Forms/RegisterForm';
+import withAuth from '../../components/redux/providers/withAuth';
+import LoginForm from './Forms/LoginForm';
+import RegisterForm from './Forms/RegisterForm';
 
-const Authentication = props => {
+const Authentication = (props) => {
   const [tab, setTab] = useState('login');
+  const [referralCode, setReferralCode] = useState(undefined);
 
+  useEffect(() => {
+    if (props.match?.params?.referralcode) {
+      setTab('register');
+      setReferralCode(props.match?.params?.referralcode);
+    }
+  }, [props.match?.params?.referralcode]);
 
   return (
     <div className="flex items-center min-h-screen bg-gray-50">
@@ -34,9 +41,16 @@ const Authentication = props => {
                   Sign in
                 </li>
               </ul>
-              {tab === 'login' ? <LoginForm onClose={() => props.onClose()} /> : ''}
+              {tab === 'login' ? (
+                <LoginForm onClose={() => props.onClose()} />
+              ) : (
+                ''
+              )}
               {tab === 'register' ? (
-                <RegisterForm onClose={() => props.onClose()} />
+                <RegisterForm
+                  referralCode={referralCode}
+                  onClose={() => props.onClose()}
+                />
               ) : (
                 ''
               )}
@@ -46,6 +60,6 @@ const Authentication = props => {
       </div>
     </div>
   );
-}
+};
 
 export default withAuth(Authentication);

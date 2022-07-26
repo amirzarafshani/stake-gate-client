@@ -47,6 +47,7 @@ const RegisterForm = (props) => {
       password: '',
       confirmPassword: '',
       captcha: '',
+      referral_code: props.referralCode,
     },
     enableReinitialize: true,
     // initialTouched: true,
@@ -135,8 +136,9 @@ const RegisterForm = (props) => {
           </label>
           <input
             className={`appearance-none block w-full bg-gray-100 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white 
-          ${formik.errors.confirmPassword ? 'border-red-500' : 'border-gray-200'
-              }
+          ${
+            formik.errors.confirmPassword ? 'border-red-500' : 'border-gray-200'
+          }
           `}
             id="confirmPassword"
             name="confirmPassword"
@@ -158,10 +160,11 @@ const RegisterForm = (props) => {
           </label>
           <input
             className={`appearance-none block w-full bg-gray-100 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white 
-        ${formik.touched.captcha && formik.errors.captcha
-                ? 'border-red-500'
-                : 'border-gray-200'
-              }
+        ${
+          formik.touched.captcha && formik.errors.captcha
+            ? 'border-red-500'
+            : 'border-gray-200'
+        }
         `}
             id="captcha"
             name="captcha"

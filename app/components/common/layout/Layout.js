@@ -5,7 +5,12 @@ import { useRouteMatch } from 'react-router-dom';
 import withAuth from '../../redux/providers/withAuth';
 import _ from 'lodash';
 
-const outOfLayoutLocations = ['/forgotPassword', '/register', '/login'];
+const outOfLayoutLocations = [
+  '/forgotPassword',
+  '/register',
+  '/login',
+  '/signup/:referralcode',
+];
 const haveSideMenuPages = ['/', '/referrals', '/assets', '/releases'];
 
 const Layout = (props) => {
@@ -57,7 +62,7 @@ const Layout = (props) => {
         pauseOnVisibilityChange
         draggable
         pauseOnHover
-      // autoClose={false}
+        // autoClose={false}
       />
 
       {IsOutOfLayoutRoute() || !props.user ? (

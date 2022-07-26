@@ -1,8 +1,8 @@
-@import "tailwindcss/base";
+@import 'tailwindcss/base';
 
-@import "tailwindcss/components";
+@import 'tailwindcss/components';
 
-@import "tailwindcss/utilities";
+@import 'tailwindcss/utilities';
 
 :root {
   --primary: #eaba4c;
@@ -35,7 +35,7 @@
         rgba(255, 255, 255, 0)
       );
       animation: shimmer 3s infinite;
-      content: "";
+      content: '';
     }
   }
 }
@@ -68,7 +68,7 @@
         rgba(255, 255, 255, 0)
       );
       animation: shimmer 3s infinite;
-      content: "";
+      content: '';
     }
   }
 }
@@ -190,6 +190,11 @@
     @apply font-semibold mt-2;
   }
 }
+
+.referral-link-box {
+  @apply z-0 border bg-white rounded-lg shadow-md  flex flex-col items-center px-6 py-3 cursor-pointer;
+}
+
 .account-item {
   @apply border border-gray-400 rounded-lg flex flex-col items-center justify-center px-3 py-3;
   &:hover {
