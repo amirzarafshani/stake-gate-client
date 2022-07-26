@@ -3,7 +3,7 @@ import React, { Component, useState } from 'react';
 import { toastr } from 'react-redux-toastr';
 import Loading from '../../../components/common/base/Loading';
 import assetsService from '../../../services/assetsService';
-import PlanSelect from '../Components/PlanSelect'
+import PlanSelect from '../Components/PlanSelect';
 
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -11,14 +11,12 @@ import * as Yup from 'yup';
 const data = {
   amount: '',
   transaction_id: '',
-  plan_id: ''
+  plan_id: '',
 };
 
 const DepositForm = ({ onCloseAndReload, action }) => {
-
-
   const handleSubmit = (values, setSubmitting, resetForm) => {
-    values.action = 'deposit'
+    values.action = 'deposit';
     assetsService
       .add(JSON.stringify(values))
       .then((res) => {
@@ -27,17 +25,16 @@ const DepositForm = ({ onCloseAndReload, action }) => {
       })
       .catch((error) => {
         console.log(error);
-      }).finally(() => {
-
+      })
+      .finally(() => {
         setSubmitting(false);
       });
-
   };
 
   const ValidationSchema = Yup.object().shape({
     amount: Yup.string().trim().nullable().required(' '),
     transaction_id: Yup.string().trim().nullable().required(' '),
-    plan_id: Yup.string().trim().nullable().required(' ')
+    plan_id: Yup.string().trim().nullable().required(' '),
   });
 
   return (
@@ -68,10 +65,27 @@ const DepositForm = ({ onCloseAndReload, action }) => {
                     htmlFor="amount"
                     className="block text-sm font-medium text-gray-700"
                   >
+                    Wallet Address
+                  </label>
+                  <div
+                    className={`mt-1 relative rounded-md shadow-sm border border-gray-200`}
+                  >
+                    <span className="block w-full py-3 pl-3 pr-3 sm:text-sm rounded-md focus:outline-none">
+                      Wallet Address And Protocol
+                    </span>
+                  </div>
+                </div>
+                <div className="my-4">
+                  <label
+                    htmlFor="amount"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Amount
                   </label>
                   <div
-                    className={`mt-1 relative rounded-md shadow-sm border ${errors.amount ? 'border-red-500' : 'border-gray-200'}`}
+                    className={`mt-1 relative rounded-md shadow-sm border ${
+                      errors.amount ? 'border-red-500' : 'border-gray-200'
+                    }`}
                   >
                     <input
                       type="text"
@@ -91,7 +105,11 @@ const DepositForm = ({ onCloseAndReload, action }) => {
                     Transaction Id
                   </label>
                   <div
-                    className={`mt-1 relative rounded-md shadow-sm border ${errors.transaction_id ? 'border-red-500' : 'border-gray-200'}`}
+                    className={`mt-1 relative rounded-md shadow-sm border ${
+                      errors.transaction_id
+                        ? 'border-red-500'
+                        : 'border-gray-200'
+                    }`}
                   >
                     <input
                       type="text"
@@ -112,26 +130,25 @@ const DepositForm = ({ onCloseAndReload, action }) => {
                   </label>
                   <PlanSelect
                     value={values.plan_id}
-                    onChange={val => setFieldValue("plan_id", val)}
+                    onChange={(val) => setFieldValue('plan_id', val)}
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className={`btn-primary w-full !py-2 md:!w-1/4 !px-20 ${isSubmitting ? 'submitting' : ''
-                    }`}
+                  className={`btn-primary w-full !py-2 md:!w-1/4 !px-20 ${
+                    isSubmitting ? 'submitting' : ''
+                  }`}
                   disabled={isSubmitting}
                 >
                   Submit
                 </button>
               </div>
             </form>
-
-          </div >
+          </div>
         );
       }}
-    </Formik >
+    </Formik>
   );
-
-}
-export default DepositForm
+};
+export default DepositForm;
