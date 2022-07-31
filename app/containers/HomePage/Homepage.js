@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import withAuth from './../../components/redux/providers/withAuth';
 import Authentication from '../Auth/Authentication';
 import UserShortcuts from './Partials/UserShortcuts';
-import UserReferralLink from './Partials/UserReferralLink';
+import Slider from './Partials/Slider';
 import ProfitChart from './Partials/ProfitChart';
 import profileService from '../../services/profileService';
 
@@ -59,7 +59,7 @@ const HomePage = (props) => {
 
       {props.user ? (
         <React.Fragment>
-          <UserReferralLink referralCode={referralCode} />
+          <Slider />
           <UserShortcuts />
           <ProfitChart data={data} />
         </React.Fragment>

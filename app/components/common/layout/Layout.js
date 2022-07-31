@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import Navigation from './Navigation';
+import MobileNav from './Partials/MobileNav';
 import { useRouteMatch } from 'react-router-dom';
 import withAuth from '../../redux/providers/withAuth';
 import _ from 'lodash';
@@ -11,7 +12,13 @@ const outOfLayoutLocations = [
   '/login',
   '/signup/:referralcode',
 ];
-const haveSideMenuPages = ['/', '/referrals', '/assets', '/releases'];
+const haveSideMenuPages = [
+  '/',
+  '/referrals',
+  '/assets',
+  '/releases',
+  '/referralcode',
+];
 
 const Layout = (props) => {
   function IsOutOfLayoutRoute() {
@@ -75,7 +82,7 @@ const Layout = (props) => {
             children={children}
           />
 
-          {/* <div id="main-wrapper">{children}</div> */}
+          {/* <MobileNav /> */}
         </React.Fragment>
       )}
     </React.Fragment>

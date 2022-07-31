@@ -17,11 +17,14 @@ import Login from 'containers/Auth/Forms/LoginForm';
 import Authentication from 'containers/Auth/Authentication';
 import Assets from 'containers/Assets/Loadable';
 import Referrals from 'containers/Referrals/Loadable';
+import ReferralCode from 'containers/ReferralCode/Loadable';
 import Releases from 'containers/Releases/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Aboutus from 'containers/Pages/Aboutus/Loadable';
 import Layout from 'components/common/layout/Layout';
 
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import '../../components/common/styles/tailwind.scss';
 import '../../components/common/styles/main.scss';
 import withAuth from './../../components/redux/providers/withAuth';
@@ -56,6 +59,12 @@ function App(props) {
             component={Authentication}
           />
           <Route exact path="/Aboutus" component={Aboutus} />
+          <PrivateRoute
+            exact
+            path="/ReferralCode"
+            component={ReferralCode}
+            user={props.user}
+          />
           <PrivateRoute
             exact
             path="/referrals"
