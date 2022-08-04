@@ -21,6 +21,10 @@ import ReferralCode from 'containers/ReferralCode/Loadable';
 import Releases from 'containers/Releases/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Aboutus from 'containers/Pages/Aboutus/Loadable';
+import Plans from 'containers/Plans/Loadable';
+import Profile from 'containers/Profile/Loadable';
+import Statistics from 'containers/Statistics/Loadable';
+import Support from 'containers/Support/Loadable';
 import Layout from 'components/common/layout/Layout';
 
 import 'slick-carousel/slick/slick.css';
@@ -61,7 +65,13 @@ function App(props) {
           <Route exact path="/Aboutus" component={Aboutus} />
           <PrivateRoute
             exact
-            path="/ReferralCode"
+            path="/plans"
+            component={Plans}
+            user={props.user}
+          />
+          <PrivateRoute
+            exact
+            path="/referralCode"
             component={ReferralCode}
             user={props.user}
           />
@@ -73,8 +83,26 @@ function App(props) {
           />
           <PrivateRoute
             exact
-            path="/Assets"
+            path="/assets"
             component={Assets}
+            user={props.user}
+          />
+          <PrivateRoute
+            exact
+            path="/statistics"
+            component={Statistics}
+            user={props.user}
+          />
+          <PrivateRoute
+            exact
+            path="/profile"
+            component={Profile}
+            user={props.user}
+          />
+          <PrivateRoute
+            exact
+            path="/support"
+            component={Support}
             user={props.user}
           />
           <PrivateRoute

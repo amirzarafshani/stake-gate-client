@@ -6,6 +6,7 @@ import _ from 'lodash';
 import { Link } from 'react-router-dom';
 import LoggedInUserMenu from './Partials/LoggedInUserMenu';
 import AuthModal from '../../../containers/Auth/Modals/AuthModal';
+import { isMobileOnly } from 'react-device-detect';
 
 const Navigation = (props) => {
   const [isPagesMenuOpen, setIsPagesMenuOpen] = useState(false);
@@ -186,7 +187,7 @@ const Navigation = (props) => {
           )}
           <aside
             className={`fixed inset-y-0 z-20 flex-shrink-0 w-64 mt-16 overflow-y-auto bg-[#1E1E2D] transition ease-in-out duration-150 
-      ${isSideMenuOpen ? 'opacity-100' : 'opacity-0 transform -translate-x-20'
+      ${isSideMenuOpen ? 'opacity-100' : ' transform -translate-x-80'
               }  ${props.ShowSideMenuIcon ? '' : 'md:hidden'}
       `}
           >
@@ -326,8 +327,8 @@ const Navigation = (props) => {
         <header className="z-10 py-4 bg-[#1E1E2D] shadow-md h-20">
           <div className="container flex items-center justify-between h-full px-6 mx-auto text-[#E0AC32] relative">
             <div className="flex-shrink-0 flex items-center">
-              <button
-                className={`p-1 mr-5 -ml-1 rounded-md focus:outline-none focus:shadow-outline-purple 
+           {!isMobileOnly ?    <button
+                className={`p-1 mr-5 -ml-1 rounded-md focus:outline-none  
               ${props.ShowSideMenuIcon
                     ? ''
                     : props.user && !_.isEmpty(props.user)
@@ -349,7 +350,7 @@ const Navigation = (props) => {
                     clipRule="evenodd"
                   ></path>
                 </svg>
-              </button>
+              </button> :''}
               {(!props.sideMenu ||
                 props.ShowSideMenuIcon ||
                 _.isEmpty(props.user) ||
@@ -383,7 +384,7 @@ const Navigation = (props) => {
           </div>
         </header>
         <main
-          className={`h-full overflow-y-auto p-4 ${props.sideMenu
+          className={`h-full overflow-y-auto md:p-4 ${props.sideMenu
             ? 'bg-[#F2F3F7]'
             : isActiveMenu('/')
               ? 'bg-[#132846]'

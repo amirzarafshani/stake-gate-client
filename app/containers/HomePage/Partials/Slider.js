@@ -33,6 +33,8 @@ export default function Slider({ referralCode }) {
     dots: false,
     arrows: false,
     infinite: true,
+
+    adaptiveHeight: true,
     // cssEase: 'linear',
     // variableWidth: true,
     // variableHeight: true,
@@ -42,12 +44,12 @@ export default function Slider({ referralCode }) {
     cssEase: 'ease',
     // autoplaySpeed: 7000,
     speed: 500,
+    useCSS: true,
     adaptiveHeight: true,
   };
 
   return (
-    <div className="container mx-auto my-5 px-5">
-      <div className="box">
+    <div className="md:container mx-auto md:my-5 md:px-5">
         <SlickSlider {...settings}>
           {data?.length > 0 ? (
             data.map((item, index) => (
@@ -59,7 +61,7 @@ export default function Slider({ referralCode }) {
             <div key={0} />
           )}
         </SlickSlider>
-      </div>
+     
     </div>
   );
 }

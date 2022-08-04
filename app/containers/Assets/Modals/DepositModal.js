@@ -49,7 +49,7 @@ const DepositModal = (props) => {
                 </div>
             </DialogTitle>
             <DialogContent className="bg-gray-50">
-                <DepositForm onCloseAndReload={handleCloseModalAndReload} />
+                <DepositForm onCloseAndReload={handleCloseModalAndReload} planId={props.planId} />
             </DialogContent>
         </Dialog>
     );

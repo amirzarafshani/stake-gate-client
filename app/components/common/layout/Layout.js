@@ -82,7 +82,7 @@ const Layout = (props) => {
             children={children}
           />
 
-          {/* <MobileNav /> */}
+          <MobileNav />
         </React.Fragment>
       )}
     </React.Fragment>

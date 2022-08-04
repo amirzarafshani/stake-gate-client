@@ -282,3 +282,9 @@
     @apply !text-red-500 hover:!text-red-600 w-6 h-6 ml-2;
   }
 }
+
+.MuiBottomNavigationAction-root
+{color: #1E1E2D !important;
+&.Mui-selected{
+ color: #eaba4c !important;
+}}

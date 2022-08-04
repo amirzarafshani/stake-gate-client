@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import { FaHistory } from 'react-icons/fa';
-import MenuIcon from '@material-ui/icons/Menu';
 import history from '../../../../utils/history';
 import { isMobileOnly } from 'react-device-detect';
-import { FaHome } from 'react-icons/fa';
+import { TiHome } from 'react-icons/ti';
+import { BiSupport } from 'react-icons/bi';
+import { IoBarChart } from 'react-icons/io5';
+import { IoDiamondSharp } from 'react-icons/io5';
+import { RiUserSettingsFill } from 'react-icons/ri';
 
 const useStyles = makeStyles({
   root: {
@@ -56,7 +58,7 @@ export default function MobileNav(props) {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    props.changeNav(newValue);
+    // props.changeNav(newValue);
   };
 
   return isMobileOnly ? (
@@ -67,27 +69,41 @@ export default function MobileNav(props) {
       showLabels
     >
       <BottomNavigationAction
-        className={classes.bottomNavAct}
-        label=""
-        value="orders"
-        icon={<FaHistory size="2em" />}
-        onClick={() => history.push('/shop/orders')}
-      />
-      <BottomNavigationAction
         className={
           classes.bottomNavAct + value === 'home' ? 'home Mui-selected' : 'home'
         }
         label=""
         value="home"
-        icon={<FaHome size="2.3em" />}
-        onClick={() => history.push('/shop')}
+        icon={<TiHome size="2.1em" />}
+        onClick={() => history.push('/')}
       />
-      {/* <BottomNavigationAction className={classes.bottomNavAct} label="" value="Recents" icon={<FaRegCommentDots size="2em" />} onClick={() => history.push("/shop/messages")} /> */}
       <BottomNavigationAction
         className={classes.bottomNavAct}
         label=""
-        value="menu"
-        icon={<MenuIcon size="2em" />}
+        value="statistics"
+        icon={<IoBarChart size="2em" />}
+        onClick={() => history.push('/statistics')}
+      />
+      <BottomNavigationAction
+        className={classes.bottomNavAct}
+        label=""
+        value="plans"
+        icon={<IoDiamondSharp size="2em" />}
+        onClick={() => history.push('/plans')}
+      />
+      <BottomNavigationAction
+        className={classes.bottomNavAct}
+        label=""
+        value="support"
+        icon={<BiSupport size="2em" />}
+        onClick={() => history.push('/support')}
+      />
+      <BottomNavigationAction
+        className={classes.bottomNavAct}
+        label=""
+        value="profile"
+        icon={<RiUserSettingsFill size="2em" />}
+        onClick={() => history.push('/profile')}
       />
     </BottomNavigation>
   ) : (

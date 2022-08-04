@@ -1,5 +1,5 @@
 /*eslint-env jquery*/
-import React, { Component, useState } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import { toastr } from 'react-redux-toastr';
 import Loading from '../../../components/common/base/Loading';
 import assetsService from '../../../services/assetsService';
@@ -8,13 +8,19 @@ import PlanSelect from '../Components/PlanSelect';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
-const data = {
+const initialData = {
   amount: '',
   transaction_id: '',
   plan_id: '',
 };
 
-const DepositForm = ({ onCloseAndReload, action }) => {
+const DepositForm = ({ onCloseAndReload, planId }) => {
+  const [data, setData] = useState(initialData)
+
+  useEffect(() => {
+    setData({ ...initialData, plan_id: planId })
+  }, [planId])
+
   const handleSubmit = (values, setSubmitting, resetForm) => {
     values.action = 'deposit';
     assetsService
@@ -83,9 +89,8 @@ const DepositForm = ({ onCloseAndReload, action }) => {
                     Amount
                   </label>
                   <div
-                    className={`mt-1 relative rounded-md shadow-sm border ${
-                      errors.amount ? 'border-red-500' : 'border-gray-200'
-                    }`}
+                    className={`mt-1 relative rounded-md shadow-sm border ${errors.amount ? 'border-red-500' : 'border-gray-200'
+                      }`}
                   >
                     <input
                       type="text"
@@ -105,11 +110,10 @@ const DepositForm = ({ onCloseAndReload, action }) => {
                     Transaction Id
                   </label>
                   <div
-                    className={`mt-1 relative rounded-md shadow-sm border ${
-                      errors.transaction_id
+                    className={`mt-1 relative rounded-md shadow-sm border ${errors.transaction_id
                         ? 'border-red-500'
                         : 'border-gray-200'
-                    }`}
+                      }`}
                   >
                     <input
                       type="text"
@@ -136,9 +140,8 @@ const DepositForm = ({ onCloseAndReload, action }) => {
 
                 <button
                   type="submit"
-                  className={`btn-primary w-full !py-2 md:!w-1/4 !px-20 ${
-                    isSubmitting ? 'submitting' : ''
-                  }`}
+                  className={`btn-primary w-full !py-2 md:!w-1/4 !px-20 ${isSubmitting ? 'submitting' : ''
+                    }`}
                   disabled={isSubmitting}
                 >
                   Submit

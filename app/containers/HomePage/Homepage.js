@@ -4,7 +4,7 @@ import withAuth from './../../components/redux/providers/withAuth';
 import Authentication from '../Auth/Authentication';
 import UserShortcuts from './Partials/UserShortcuts';
 import Slider from './Partials/Slider';
-import ProfitChart from './Partials/ProfitChart';
+// import ProfitChart from './Partials/ProfitChart';
 import profileService from '../../services/profileService';
 
 const HomePage = (props) => {
@@ -60,8 +60,9 @@ const HomePage = (props) => {
       {props.user ? (
         <React.Fragment>
           <Slider />
+          <br />
           <UserShortcuts />
-          <ProfitChart data={data} />
+          {/* <ProfitChart data={data} /> */}
         </React.Fragment>
       ) : (
         <Authentication />
