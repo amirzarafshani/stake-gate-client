@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { handleSuccess, handleError } from '../utils/axiosHandler';
-import { authHeaderJson, authHeader } from '../utils/auth-header';
+import { authHeaderJson, authHeader, authHeaderFormData } from '../utils/auth-header';
 
 import config from '../config';
 const apiUrl = config.apiUrl;
@@ -16,7 +16,7 @@ const assetsService = {
 function add(dto) {
   const url = `${apiUrl}${model}`;
   axios.interceptors.response.use(handleSuccess, handleError);
-  return axios.post(url, dto, { headers: authHeaderJson() });
+  return axios.post(url, dto, { headers: authHeaderFormData() });
 }
 
 function getAssets(page, page_size) {

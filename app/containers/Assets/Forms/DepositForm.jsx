@@ -2,6 +2,7 @@
 import React, { Component, useEffect, useState } from 'react';
 import { toastr } from 'react-redux-toastr';
 import Loading from '../../../components/common/base/Loading';
+import UploadAttachment from '../../../components/common/base/UploadAttachment';
 import assetsService from '../../../services/assetsService';
 import PlanSelect from '../Components/PlanSelect';
 
@@ -12,6 +13,7 @@ const initialData = {
   amount: '',
   transaction_id: '',
   plan_id: '',
+  image: ''
 };
 
 const DepositForm = ({ onCloseAndReload, planId }) => {
@@ -22,9 +24,17 @@ const DepositForm = ({ onCloseAndReload, planId }) => {
   }, [planId])
 
   const handleSubmit = (values, setSubmitting, resetForm) => {
-    values.action = 'deposit';
+
+    let formData = new FormData()
+    formData.append("image", values.image)
+    formData.append("action", 'deposit')
+    formData.append("amount", values.amount)
+    formData.append("transaction_id", values.transaction_id)
+    formData.append("plan_id", values.plan_id)
+
+
     assetsService
-      .add(JSON.stringify(values))
+      .add(formData)
       .then((res) => {
         onCloseAndReload();
         resetForm();
@@ -41,6 +51,7 @@ const DepositForm = ({ onCloseAndReload, planId }) => {
     amount: Yup.string().trim().nullable().required(' '),
     transaction_id: Yup.string().trim().nullable().required(' '),
     plan_id: Yup.string().trim().nullable().required(' '),
+    image: Yup.string().trim().nullable().required(' '),
   });
 
   return (
@@ -71,13 +82,13 @@ const DepositForm = ({ onCloseAndReload, planId }) => {
                     htmlFor="amount"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Wallet Address
+                    Wallet Address (TRC20)
                   </label>
                   <div
                     className={`mt-1 relative rounded-md shadow-sm border border-gray-200`}
                   >
                     <span className="block w-full py-3 pl-3 pr-3 sm:text-sm rounded-md focus:outline-none">
-                      Wallet Address And Protocol
+                      TC3HwYZ21kyFPyLJ6aSvYexvuYPm9cdugk
                     </span>
                   </div>
                 </div>
@@ -111,8 +122,8 @@ const DepositForm = ({ onCloseAndReload, planId }) => {
                   </label>
                   <div
                     className={`mt-1 relative rounded-md shadow-sm border ${errors.transaction_id
-                        ? 'border-red-500'
-                        : 'border-gray-200'
+                      ? 'border-red-500'
+                      : 'border-gray-200'
                       }`}
                   >
                     <input
@@ -124,6 +135,10 @@ const DepositForm = ({ onCloseAndReload, planId }) => {
                       placeholder="Transaction Id"
                     />
                   </div>
+                </div>
+                <div className="my-4">
+                  <UploadAttachment error={errors.image} label="Transaction Screenshot"
+                    onChange={val => setFieldValue("image", val)} />
                 </div>
                 <div className="my-4">
                   <label
