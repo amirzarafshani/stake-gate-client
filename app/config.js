@@ -1,5 +1,5 @@
 export default {
-  platformUrl: 'http://api.diamond-stake.com/',
-  apiUrl: 'http://api.diamond-stake.com/',
-  uploadUrl: 'http://api.diamond-stake.com',
+  platformUrl: 'https://api.diamond-stake.com/',
+  apiUrl: 'https://api.diamond-stake.com/',
+  uploadUrl: 'https://api.diamond-stake.com',
 };
